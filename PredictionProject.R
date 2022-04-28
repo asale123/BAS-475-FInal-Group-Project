@@ -1,26 +1,29 @@
-
 library(regclass)
 library(readr)
 library(dplyr)
 library(tsibble)
 library(tstools)
+library(ggplot2)
+library(lubridate)
 
 CREDIT <- read_csv("credit.csv")
 # View(CREDIT)
 
+##Create the months variable to corresponds to the credits values
+CREDIT_TS <- ts(CREDIT, frequency = 12)
 
 
 
 ## Plot time series  (3 graphs)
-
       ## 1
-# tsplot(x=12, y=CREDIT)
+tsplot(CREDIT_TS)
+
 
       ## 2
-# plot(ts(data, start=start_time, frequency=gap))
+plot(ts(CREDIT_TS, start= 0 , frequency=12))
 
       ## 3
-#  ts.plot(ts(data, start=start_time, frequency=gap))
+ts.plot(ts(CREDIT_TS, start= 0 , frequency=12))
 
 
 ## Filters (2 graphs)
